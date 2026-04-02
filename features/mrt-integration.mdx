@@ -1,0 +1,71 @@
+---
+title: "MRT Integration"
+description: "NextBus SG labels bus stops that are also MRT interchanges, making it easier to plan bus-to-MRT transfers."
+---
+
+NextBus SG cross-references bus stop data with MRT station names to help you identify stops that serve as interchange points between bus and MRT services.
+
+## How MRT labels work
+
+Each bus stop in the app's data includes an `mrtStations` field — a list of MRT station names associated with that stop. When this list is non-empty, the stop is labelled with the station name in the app's UI.
+
+In the `BusStop` model:
+
+```dart
+class BusStop {
+  final String code;
+  final String name;
+  final String road;
+  final Position position;
+  List services;
+  final List mrtStations; // List of associated MRT station names
+  ...
+}
+```
+
+The raw data comes from `assets/bus_stops.json`, where each stop entry includes a `mrt_stations` array of arrays. Each inner array holds the MRT line codes for that station. For example, Outram Park station lists `[["ew16","ne3"]]` — one entry containing both the EW and NE line codes.
+
+## Where MRT labels appear
+
+MRT station labels are displayed in two places:
+
+<CardGroup cols={2}>
+  <Card title="Search results" icon="magnifying-glass">
+    When you search for a stop by MRT station name or browse results, stops with MRT associations show the station name as a label next to the stop name.
+  </Card>
+  <Card title="Near-me list" icon="location-dot">
+    Bus stops on the home screen's "Near Me" list that are also MRT interchanges are labelled with the station name.
+  </Card>
+</CardGroup>
+
+## Searching by MRT station code
+
+You can search directly by MRT station code on the Search page. Queries are matched against the `mrtStations` field — your input is uppercased before matching, so `ew16` and `EW16` both work.
+
+MRT codes follow the standard line + station number format:
+
+| Code | Line |
+|------|------|
+| `ew` | East West Line |
+| `ns` | North South Line |
+| `ne` | North East Line |
+| `cc` / `ce` | Circle Line |
+| `dt` | Downtown Line |
+| `te` | Thomson–East Coast Line |
+
+For example, entering `ew16` returns all bus stops associated with Outram Park station (EW16/NE3).
+
+## Planning bus-to-MRT transfers
+
+To find bus services that connect to an MRT station:
+
+1. Open the Search page.
+2. Type the MRT station code (e.g., `ns1`, `ew24`, `dt35`).
+3. Review the matching bus stops — these are stops near or at that station.
+4. Tap a stop to see all bus services available there and their live arrival times.
+
+This workflow lets you identify which buses serve a given MRT station without knowing the stop code in advance.
+
+<Note>
+  MRT station detail pages are not yet implemented. Tapping an MRT station label does not navigate to a dedicated station page. This feature is listed as unplanned in the project roadmap. Currently, MRT data is only used for labelling and search matching.
+</Note>

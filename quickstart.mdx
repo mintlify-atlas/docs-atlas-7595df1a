@@ -1,80 +1,113 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: "Quick start"
+description: "Get live bus arrival times on your phone in a few steps."
 ---
 
-## Get started in three steps
+This guide walks you through downloading NextBus SG and getting your first bus timings.
 
-Get your documentation site running locally and make your first customization.
+<Note>
+  NextBus SG uses your device's GPS to find nearby bus stops. You need to be physically located in Singapore for nearby stops to appear.
+</Note>
 
-### Step 1: Set up your local environment
+## Get bus timings for the first time
+
+<Steps>
+  <Step title="Download the app">
+    Install NextBus SG from your device's app store.
+
+    - **iOS:** [App Store](https://apps.apple.com/my/app/nextbus-sg/id1509167028)
+    - **Android:** [Google Play](https://play.google.com/store/apps/details?id=com.themindstorm.nextbussg)
+  </Step>
+
+  <Step title="Grant location permission">
+    On first launch, the app shows an onboarding screen titled **"One more step …"**
+
+    Tap **Grant permission** to allow NextBus SG to access your location. Location access is required for the app to detect which bus stops are near you.
+
+    If the system permission prompt appears, select **Allow While Using App** (or the equivalent on your device).
+
+    If you previously denied location access, tap **Open location settings** to go directly to your device's app settings and enable location manually.
+  </Step>
+
+  <Step title="View nearby bus stops">
+    After granting permission, the app opens on the **Near Me** tab. You will see a list of bus stops within range of your current location.
+
+    Each bus stop card shows:
+    - The stop name and 5-digit stop code
+    - A list of bus services at that stop
+    - Arrival times in minutes for the next two buses on each service
+    - A colored dot indicating how crowded each bus is (green = seats available, yellow = standing, red = crowded)
+  </Step>
+
+  <Step title="Save a favorite bus">
+    Once you find a bus you take regularly, save it as a favorite so it surfaces automatically next time.
+
+    1. Locate the bus service tile at your usual stop.
+    2. **Slide the tile to the left** to reveal the heart button.
+    3. Tap the heart button to save it to your favorites.
+
+    The next time you open the app near that stop, that bus's timings will appear at the top of the screen automatically.
+  </Step>
+</Steps>
+
+## What each screen looks like
+
+**Near Me tab** — The main screen shows a vertically scrollable list of nearby bus stops. If you have favorites saved and you are near one of those stops, a "Favorites" section appears above the full stop list. Each row in a stop card is one bus service, showing the next two arrival times.
+
+**Search tab** — A search bar at the top accepts stop names, stop codes (5-digit numbers), or service numbers. Tapping a result opens a detail page for that stop or service. Bus stops that are also MRT interchanges are marked with an MRT label.
+
+**More tab** — Contains theme settings (light/dark), a link to view and rename all saved favorites, and the FAQ.
+
+## Frequently asked questions
 
 <AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
+  <Accordion title="How do I add or remove a favorite?">
+    **Slide** any bus service tile to the left to reveal the heart icon. Tap it to add or remove the service from your favorites. The icon turns red if the service is already saved.
   </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
+
+  <Accordion title="Why aren't all my favorites showing on the home screen?">
+    The home screen only shows favorites that are **near your current location**. Favorites saved at stops far from you are hidden to keep the screen uncluttered. To see all your favorites regardless of location, tap **"See all"** on the home screen.
+  </Accordion>
+
+  <Accordion title="How do I rename a bus stop?">
+    There are two ways:
+
+    1. Add the stop to your favorites, then go to the **More** tab and tap **"Rename favorites"**.
+    2. Search for the stop in the **Search** tab, open its detail page, and tap **"Rename"**.
+
+    Renamed stops appear in italics throughout the app.
+  </Accordion>
+
+  <Accordion title="How do I see more information about a bus stop?">
+    Two ways:
+
+    - Tap the 5-digit stop code shown on any bus stop card on the home screen.
+    - Search for the stop in the **Search** tab and tap the result.
+
+    The stop detail page shows all services at that stop and their arrival times.
+  </Accordion>
+
+  <Accordion title="No bus stops are showing on the Near Me tab — what do I check?">
+    The message "No bus stops nearby. Are you in Singapore?" appears when no stops are found within range.
+
+    Check the following:
+    - You are physically located in Singapore.
+    - Location permission is granted. Go to **More** → check location settings, or open your device's app settings for NextBus SG.
+    - Your device's GPS or location services are turned on.
+  </Accordion>
+
+  <Accordion title="Some buses show no arrival time — why?">
+    If a bus service shows no timing, it is either not currently in operation (outside service hours) or the LTA API is temporarily unavailable. The app displays a note when timings cannot be retrieved.
   </Accordion>
 </AccordionGroup>
-
-### Step 2: Deploy your changes
-
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
-
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
-
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 3: Go live
-
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
 
 ## Next steps
 
-Now that you have your docs running, explore these key features:
-
 <CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
+  <Card title="Setup & permissions" icon="gear" href="/setup">
+    Learn more about location permissions and the first-launch flow.
+  </Card>
+  <Card title="Favorites" icon="heart" href="/features/favorites">
+    Understand how context-aware favorites work.
+  </Card>
 </CardGroup>
-
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>

@@ -1,97 +1,68 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "NextBus SG"
+description: "Real-time bus arrival times and a full bus directory for Singapore commuters — no clutter, no maps, just the timings you need."
 ---
 
-## Setting up
+NextBus SG is a free Flutter app for iOS and Android that shows you live bus arrival times for stops near you, lets you save favorite buses, and helps you search the full Singapore bus directory. It pulls live data from the [LTA DataMall](https://datamall.lta.gov.sg/) API so timings are always up to date.
 
-Get your documentation site up and running in minutes.
-
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
-
-## Make it yours
-
-Design a docs site that looks great and empowers your users.
-
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
+<CardGroup cols={2}>
+  <Card title="Quick Start" icon="rocket" href="/quickstart">
+    Download the app and get your first bus timings in under a minute.
   </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
+  <Card title="Bus Arrivals" icon="bus" href="/features/bus-arrivals">
+    See live arrival times for every bus stop within 500m of you.
   </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
+  <Card title="Favorites" icon="heart" href="/features/favorites">
+    Save your regular buses and see their timings automatically when you're nearby.
   </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
+  <Card title="Search" icon="magnifying-glass" href="/features/search">
+    Search for any bus stop, service number, or route across Singapore.
   </Card>
-</Columns>
+</CardGroup>
 
-## Create beautiful pages
+## What makes NextBus SG different
 
-Everything you need to create world-class documentation.
+Most bus apps show you everything at once — maps, full route lists, every stop in the city. NextBus SG takes the opposite approach: show you only what you're actually going to take, right now.
 
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
+<CardGroup cols={2}>
+  <Card title="Context-aware favorites" icon="location-dot">
+    When you open the app near a saved stop, your favorite bus timings appear at the top automatically — no searching required.
   </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
+  <Card title="No map clutter" icon="eye-slash">
+    Once you know where your stop is, a map wastes screen space. NextBus SG skips the map and gets straight to timings.
   </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
+  <Card title="MRT integration" icon="train-subway">
+    Bus stops that are also MRT interchanges are clearly labelled so you always know your transit options at a glance.
   </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
+  <Card title="Light & dark themes" icon="moon">
+    Switch between light and dark mode — or follow your system setting — for comfortable reading any time of day.
   </Card>
-</Columns>
+</CardGroup>
 
-## Need inspiration?
+## Get the app
 
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+<CardGroup cols={2}>
+  <Card title="Download on the App Store" icon="apple" href="https://apps.apple.com/my/app/nextbus-sg/id1509167028">
+    Available for iPhone and iPad running iOS 12 or later.
+  </Card>
+  <Card title="Get it on Google Play" icon="google-play" href="https://play.google.com/store/apps/details?id=com.themindstorm.nextbussg">
+    Available for Android phones and tablets.
+  </Card>
+</CardGroup>
+
+## Explore the docs
+
+<CardGroup cols={2}>
+  <Card title="Setup & permissions" icon="gear" href="/setup">
+    Understand location permissions and first-launch setup.
+  </Card>
+  <Card title="Renaming stops" icon="pen" href="/customization/renaming-stops">
+    Give your saved bus stops custom display names.
+  </Card>
+  <Card title="Contributing" icon="code-branch" href="/contributing/development">
+    Set up the dev environment and contribute to the project.
+  </Card>
+  <Card title="Data sources" icon="database" href="/contributing/data">
+    Learn how bus stop and service data is sourced from LTA.
+  </Card>
+</CardGroup>

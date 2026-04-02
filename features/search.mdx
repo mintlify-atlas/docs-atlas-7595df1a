@@ -1,0 +1,67 @@
+---
+title: "Search"
+description: "Find any bus stop by name, stop code, or road name, and look up routes for individual bus services."
+---
+
+The Search page lets you look up bus stops and services across all of Singapore. It is accessible from the second tab in the bottom navigation bar.
+
+## How to look up a bus stop
+
+<Steps>
+  <Step title="Open the Search page">
+    Tap the search icon in the bottom navigation bar to open the Search page.
+  </Step>
+  <Step title="Type your query">
+    Enter a bus stop name, stop code (5-digit number), or road name in the search box. Results appear as you search.
+  </Step>
+  <Step title="Review the results">
+    Each result shows the stop name, road name, stop code, and any MRT station labels. Results are capped at 50 for performance.
+  </Step>
+  <Step title="Tap a result for full details">
+    Tap any result to open the bus stop detail page, which shows all services at that stop and their live arrival times.
+  </Step>
+</Steps>
+
+## What you can search by
+
+The search matches against:
+
+- **Bus stop name** — partial, case-insensitive match
+- **Road name** — partial match on road name
+- **Stop code** — partial match on the 5-digit code
+- **MRT station code** — exact match against associated MRT codes (your query is uppercased before matching, e.g., entering `cc2` or `CC2` matches stops linked to Circle Line station 2)
+
+## Search results
+
+Each result in the list displays:
+
+<CardGroup cols={2}>
+  <Card title="Stop code" icon="hash">
+    The 5-digit identifier for the bus stop, used when querying the LTA API.
+  </Card>
+  <Card title="Stop name and road" icon="map-pin">
+    The official stop name and the road it is located on.
+  </Card>
+  <Card title="Services available" icon="bus">
+    A list of bus service numbers that serve this stop.
+  </Card>
+  <Card title="MRT label" icon="train">
+    If the stop is near or at an MRT station, the station name is shown as a label.
+  </Card>
+</CardGroup>
+
+## No stops found
+
+If the search query does not match any stops, the app displays:
+
+> *"No stops found. Please revise your query."*
+
+The search box remains active so you can adjust your input.
+
+## Bus service details page
+
+From a bus stop detail page, you can tap on an individual bus service number to open its service detail page. This page lists all routes for that service, showing the sequence of stops along each direction of the route.
+
+## MRT station labels in search
+
+Bus stops that are associated with MRT stations display the MRT code alongside the stop name in search results. You can also search by MRT station code (e.g. `ew16`, `ns1`) to find all bus stops at that station. See [MRT Integration](/features/mrt-integration) for more details.

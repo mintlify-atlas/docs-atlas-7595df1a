@@ -1,0 +1,83 @@
+---
+title: "Bus Arrivals"
+description: "How NextBus SG detects nearby bus stops and displays real-time arrival times from the LTA DataMall API."
+---
+
+The home screen is the primary view in NextBus SG. When the app launches, it detects your location and automatically finds bus stops within range, then fetches live arrival times for each one.
+
+## How the home screen works
+
+On launch, the app requests your device location and scans all bus stops in Singapore. Any stop within **590 meters** of your current position is added to the "Near Me" list. Arrival times are then fetched from the LTA DataMall API for every stop in that list.
+
+If no stops are found nearby, the app displays: *"No bus stops nearby. Are you in Singapore?"*
+
+### Pull-to-refresh
+
+Swipe down on the home screen to reload. This re-fetches your location, rebuilds the nearby stops list, and gets fresh arrival timings from the API.
+
+## Arrival time display
+
+Each bus service tile shows up to three upcoming buses. Times are displayed as minutes remaining (e.g., `5 m`, `12 m`).
+
+### "Arr" indicator
+
+When the next bus is 0 minutes away — meaning it has already arrived at the stop — the app shows **Arr** instead of `0 m`.
+
+### Buses no longer in service
+
+If a bus has already departed and its estimated arrival time is negative, it is removed from the active slots and shown separately as no longer in service. The app moves remaining buses up and leaves any trailing slot empty.
+
+## Load indicators
+
+Each bus displays a load indicator showing how crowded it is:
+
+<AccordionGroup>
+  <Accordion title="SEA — Seats Available">
+    Seats are available on this bus. Displayed in green.
+  </Accordion>
+  <Accordion title="SDA — Standing Available">
+    All seats are taken, but standing room is available. Displayed in orange.
+  </Accordion>
+  <Accordion title="LSD — Limited Standing">
+    The bus is nearly full. Only limited standing space remains. Displayed in red.
+  </Accordion>
+</AccordionGroup>
+
+## BusArrival model
+
+The following fields are parsed from the LTA API response for each bus service:
+
+| Field          | Source field    | Description                                      |
+| -------------- | --------------- | ------------------------------------------------ |
+| `service`      | `ServiceNo`     | The bus service number (e.g., `"65"`, `"196e"`)  |
+| `operatorName` | `Operator`      | Bus operator code (e.g., `SBST`, `SMRT`)         |
+| `nextBuses`    | `NextBus` 1–3   | List of the next 3 buses with timing and load    |
+
+Each entry in `nextBuses` (`NextBus`) contains:
+
+| Field           | Description                                               |
+| --------------- | --------------------------------------------------------- |
+| `timeInMinutes` | Minutes until arrival, `"Arr"` if arrived, or `null`     |
+| `load`          | Crowding level: `SEA`, `SDA`, or `LSD` (see below)       |
+| `feature`       | Accessibility features (e.g., wheelchair accessibility)  |
+| `type`          | Bus type (e.g., single deck, double deck, bendy)         |
+
+## API reference
+
+Arrival data is fetched from the LTA DataMall Bus Arrival v2 endpoint:
+
+```
+GET http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?BusStopCode={stopCode}
+```
+
+The request includes your LTA API key in the `AccountKey` header.
+
+<Note>
+  If you are building or contributing to NextBus SG, you need a valid LTA DataMall API key. Create a `lib/keys.dart` file with:
+
+  ```dart
+  final String apiKey = '<YOUR_LTA_API_KEY>';
+  ```
+
+  Request access at the [LTA DataMall API access page](https://www.mytransport.sg/content/mytransport/home/dataMall/request-for-api.html). The key is required for the app to fetch arrival times.
+</Note>

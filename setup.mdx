@@ -1,0 +1,71 @@
+---
+title: "Setup & permissions"
+description: "Understand the first-launch onboarding flow and why NextBus SG requires location access."
+---
+
+NextBus SG requires location permission to detect which bus stops are near you. This page explains what happens on first launch, what each permission state means, and what to do if something goes wrong.
+
+## First-launch flow
+
+When you open NextBus SG for the first time, the app walks you through a short onboarding sequence before showing any bus data.
+
+<Steps>
+  <Step title="Onboarding screen">
+    The app opens to a screen titled **"One more step …"** This screen explains that location permission is required to find nearby bus stops.
+
+    You will see two buttons:
+    - **Grant permission** — triggers the system permission prompt
+    - **Open location settings** — opens your device's app settings directly
+  </Step>
+
+  <Step title="System permission prompt">
+    Tapping **Grant permission** triggers your operating system's standard location permission dialog.
+
+    Select **Allow While Using App** (iOS) or **Allow only while using the app** (Android). This gives the app access to your GPS coordinates while it is open, without tracking you in the background.
+  </Step>
+
+  <Step title="Permission granted — app opens">
+    Once you grant permission, the app records that onboarding is complete and navigates directly to the main **Near Me** tab. You will see live bus arrivals for stops near your current location.
+  </Step>
+</Steps>
+
+## What location permission is used for
+
+NextBus SG requests `locationWhenInUse` permission only. The app uses your coordinates exclusively to:
+
+1. Calculate which bus stops are within range of your position.
+2. Determine whether any of your saved favorite stops are nearby, so it can surface them at the top of the home screen.
+
+The app does not store your location, send it to any server, or access it in the background.
+
+## What happens without location permission
+
+<Warning>
+  If location permission is denied, the app cannot show nearby bus stops. The **Near Me** tab will remain empty and the app's primary function will not work.
+</Warning>
+
+If permission is denied:
+
+- The home screen shows the message: **"Location permissions required to see bus stops nearby."**
+- The **Open location settings** button appears on the permission screen so you can go to your device settings and enable access manually.
+- After enabling location in settings, return to the app and tap **Grant location access** again to re-check permission status.
+
+<Note>
+  If the Near Me tab shows **"No bus stops nearby. Are you in Singapore?"** and permission is already granted, your device GPS may not have a fix yet, or you may be in an area with low bus stop density. Try moving to a main road or refreshing the screen.
+</Note>
+
+## Re-enabling location permission
+
+If you previously denied permission and tapped **Don't allow again** (Android) or dismissed the prompt too many times (iOS), the system will no longer show the permission dialog. In this case:
+
+1. Tap **Open location settings** in the app, or go to your device's **Settings → Apps → NextBus SG → Permissions**.
+2. Set **Location** to **Allow only while using the app**.
+3. Return to NextBus SG and tap **Grant location access**.
+
+## Permission reference
+
+| Permission | What it enables | Required |
+|------------|-----------------|----------|
+| `locationWhenInUse` | Detect nearby bus stops; surface nearby favorites | Yes |
+
+No other device permissions are requested by NextBus SG.

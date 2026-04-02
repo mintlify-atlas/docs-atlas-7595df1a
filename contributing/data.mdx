@@ -1,0 +1,65 @@
+---
+title: "Data Sources"
+description: "Where NextBus SG's bus stop, service, and arrival data comes from."
+---
+
+## Static data
+
+NextBus SG bundles two JSON files with the app for bus stop and service information. These are loaded at startup and do not require a network request.
+
+| File | Contents |
+|---|---|
+| `assets/bus_stops.json` | All Singapore bus stops with codes, names, coordinates, and served routes |
+| `assets/services.json` | All bus service numbers and their route information |
+
+This data was collected starting **February 11, 2020** and is sourced from LTA (Land Transport Authority).
+
+<Note>
+  Bus stop and service data is copyrighted by LTA. Refer to the [LTA DataMall terms](https://www.mytransport.sg/content/mytransport/home/dataMall.html) for usage conditions.
+</Note>
+
+### Bus stop JSON structure
+
+Each entry in `bus_stops.json` is keyed by the bus stop code and has the following shape:
+
+```json
+{
+  "01012": {
+    "code": "01012",
+    "name": "Hotel Grand Pacific",
+    "road": "Victoria St",
+    "coords": {
+      "lat": 1.29684825487647,
+      "lon": 103.85253591654006
+    },
+    "services": ["2", "2A", "7", "12", "32", "51", "175"],
+    "mrt_stations": [["cc2"]]
+  }
+}
+```
+
+| Field | Type | Description |
+|---|---|---|
+| `code` | `string` | Unique 5-digit bus stop code |
+| `name` | `string` | Name of the bus stop |
+| `road` | `string` | Road the stop is located on |
+| `coords.lat` | `number` | Latitude |
+| `coords.lon` | `number` | Longitude |
+| `services` | `string[]` | Bus service numbers that serve this stop |
+| `mrt_stations` | `string[][]` | Nearby MRT station codes (e.g. `"cc2"` for Circle Line station 2) |
+
+## Live arrival data
+
+Bus arrival times are fetched in real time from the **LTA DataMall BusArrivalv2** endpoint using the API key configured in `lib/keys.dart`. See [Development Setup](/contributing/development) for instructions on obtaining an API key.
+
+## Data scraping scripts
+
+The `bus_stops.json` and `services.json` files were generated using scraping scripts maintained in a companion repository:
+
+[**ninest/bus-sg**](https://github.com/ninest/bus-sg) — contains the scripts and a detailed guide on how the data was collected from LTA sources.
+
+If the bundled data needs to be refreshed, refer to that repository for instructions.
+
+## MRT map images
+
+The MRT map images (`assets/mrt/mrt-dark.png` and `assets/mrt/mrt-light.png`) are also sourced from LTA and are subject to the same copyright.

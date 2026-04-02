@@ -1,0 +1,93 @@
+---
+title: "Building for Production"
+description: "Build and distribute NextBus SG for Android and iOS."
+---
+
+## Generating icons and splash screens
+
+After updating icon or splash screen assets in `pubspec.yaml`, regenerate them with:
+
+```bash
+flutter pub run flutter_launcher_icons:main
+flutter pub pub run flutter_native_splash:create
+```
+
+## Android
+
+<Steps>
+  <Step title="Build the app">
+    Choose the output format depending on your distribution target:
+
+    <CodeGroup>
+
+    ```bash App Bundle (Play Store)
+    flutter build appbundle
+    ```
+
+    ```bash APK (sideloading)
+    flutter build apk
+    ```
+
+    </CodeGroup>
+  </Step>
+
+  <Step title="List connected devices">
+    If you have multiple Android devices connected, identify the target device:
+
+    ```bash
+    adb devices
+    ```
+  </Step>
+
+  <Step title="Install on a connected device">
+    Install the built APK on a physically connected Android device:
+
+    <CodeGroup>
+
+    ```bash Single device
+    flutter install
+    ```
+
+    ```bash Specific device
+    flutter install <device_id>
+    ```
+
+    </CodeGroup>
+
+    Replace `<device_id>` with the ID shown by `adb devices`.
+  </Step>
+</Steps>
+
+### Troubleshooting
+
+<Warning>
+  If the install gets stuck at "Installing build/app/outputs/apk/app.apk", a previous debug build may still be registered on the device even if the app icon is not visible in the launcher.
+
+  Go to your device's Settings, find NextBus SG, and fully uninstall it. You can also uninstall it via ADB:
+
+  ```bash
+  adb uninstall com.themindstorm.nextbussg
+  ```
+
+  Then run `flutter install` again. If the issue persists, see [this Stack Overflow answer](https://stackoverflow.com/questions/53394504/flutter-stuck-at-installing-build-app-outputs-apk-app-apk).
+</Warning>
+
+## iOS
+
+<Warning>
+  Building for iOS requires a Mac running macOS with Xcode installed. iOS builds cannot be produced on Windows or Linux.
+</Warning>
+
+Open the `ios/` directory in Xcode to configure signing, then build and archive through Xcode for distribution via TestFlight or the App Store.
+
+<CodeGroup>
+
+```bash Build iOS (no codesign)
+flutter build ios --no-codesign
+```
+
+```bash Build iOS (release)
+flutter build ios --release
+```
+
+</CodeGroup>

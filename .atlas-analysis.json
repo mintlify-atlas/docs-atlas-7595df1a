@@ -1,0 +1,77 @@
+{
+  "projectType": "saas",
+  "projectName": "NextBus SG",
+  "projectDescription": "A Flutter mobile app for Singapore commuters that shows real-time bus arrival times, nearby bus stops, and a searchable bus directory with context-aware favorites.",
+  "theme": "almond",
+  "primaryColor": "#16d3e4",
+  "lightColor": "#efac7e",
+  "darkColor": "#36c4a9",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "setup"
+            ]
+          },
+          {
+            "group": "Core Features",
+            "pages": [
+              "features/bus-arrivals",
+              "features/favorites",
+              "features/search",
+              "features/mrt-integration"
+            ]
+          },
+          {
+            "group": "Customization",
+            "pages": [
+              "customization/themes",
+              "customization/renaming-stops"
+            ]
+          },
+          {
+            "group": "Contributing",
+            "pages": [
+              "contributing/development",
+              "contributing/building",
+              "contributing/data"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Real-time bus arrival times via LTA DataMall API",
+    "Location-aware nearby bus stops detection (within 500m)",
+    "Context-aware favorites that surface when near saved stops",
+    "Full-text search for bus stops and services",
+    "MRT station integration with bus stops",
+    "Custom bus stop renaming",
+    "Light and dark theme support",
+    "Android quick actions for fast access to favorites",
+    "Onboarding flow with location permission handling",
+    "Bus crowding load indicators (color-coded)"
+  ],
+  "publicApiSurface": [
+    "BusServiceProvider.getNearestStops(context, {reload})",
+    "BusServiceProvider.getAllStopsMap()",
+    "BusServiceProvider.getBusTimings(String stopCode)",
+    "FavoritesProvider.addToFavorite(context, String code, String service)",
+    "FavoritesProvider.alreadyInFavorites(String code, String service)",
+    "FavoritesProvider.getFavorites(context, {bool simplified})",
+    "FavoritesProvider.getNoFavorites()",
+    "ThemeService.getTheme(BuildContext context)",
+    "ThemeService.setTheme(BuildContext context, ThemeEnum themeEnum)",
+    "ThemeService.toggleTheme()",
+    "BusStop model: code, name, road, position, services, mrtStations",
+    "BusArrival model: service, operatorName, nextBuses",
+    "NextBus model: timeInMinutes, load, feature, type"
+  ]
+}

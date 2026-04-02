@@ -1,0 +1,58 @@
+---
+title: "Introduction"
+description: "NextBus SG is a free Flutter app for iOS and Android that shows real-time bus arrival times for Singapore commuters."
+---
+
+NextBus SG shows you live bus arrival times for stops near you, lets you save favorite buses, and includes a full Singapore bus directory. It is free to download and runs on both iOS and Android.
+
+All timing data comes directly from the [LTA DataMall](https://datamall.lta.gov.sg/) API, operated by Singapore's Land Transport Authority.
+
+<CardGroup cols={2}>
+  <Card title="Download on the App Store" icon="apple" href="https://apps.apple.com/my/app/nextbus-sg/id1509167028">
+    Available for iPhone and iPad.
+  </Card>
+  <Card title="Get it on Google Play" icon="google-play" href="https://play.google.com/store/apps/details?id=com.themindstorm.nextbussg">
+    Available for Android phones and tablets.
+  </Card>
+</CardGroup>
+
+## App philosophy
+
+NextBus SG was built for daily commuters who already know where their bus stops are. Instead of loading maps and full route lists, the app shows you only what you are actually going to take, right now.
+
+**No map.** Once you know where a stop is, a map takes up screen space without adding value. For the rare occasion you need directions to a stop, use Google Maps or Apple Maps.
+
+**Clutter-free interface.** You need bus timings. The app gives you bus timings.
+
+**Context-aware favorites.** When you save a bus at a particular stop and later open the app near that stop, the app automatically surfaces that bus's timings at the top of the screen — no tapping required.
+
+## Main screens
+
+The app has three tabs at the bottom of the screen.
+
+| Screen | What it does |
+|--------|-------------|
+| **Near Me** (Home) | Lists bus stops within range of your current location, with live arrival times for each service. Saved favorites that are nearby appear at the top. |
+| **Search** | Search for any bus stop by name, code, or MRT station code, or look up a bus service number to see its full route. |
+| **More** | Access settings, theme options, favorites management, the MRT system map, and the FAQ. |
+
+## Features
+
+<CardGroup cols={2}>
+  <Card title="Bus arrivals" icon="bus" href="/features/bus-arrivals">
+    See live arrival times for every bus stop within range, including bus load indicators.
+  </Card>
+  <Card title="Favorites" icon="heart" href="/features/favorites">
+    Save your regular buses and see their timings automatically when you are nearby.
+  </Card>
+  <Card title="Search" icon="magnifying-glass" href="/features/search">
+    Find any bus stop, service number, or route across Singapore.
+  </Card>
+  <Card title="MRT integration" icon="train-subway" href="/features/mrt-integration">
+    Bus stops that are also MRT interchanges are clearly labelled.
+  </Card>
+</CardGroup>
+
+## Data source
+
+Bus arrival data is provided by the LTA DataMall API. The data is owned and operated by Singapore's Land Transport Authority (LTA). Bus stop and service data used in the app's directory was collected from LTA and is updated periodically. See [ninest/bus-sg](https://github.com/ninest/bus-sg) for details on how the data was sourced.

@@ -1,0 +1,83 @@
+---
+title: "Development Setup"
+description: "Set up your local environment to run and develop NextBus SG."
+---
+
+## Prerequisites
+
+Before you begin, make sure you have the following installed:
+
+- **Flutter SDK** — [Install Flutter](https://flutter.dev/docs/get-started/install)
+- **Dart SDK** ≥ 2.6.0 (bundled with Flutter)
+- **Android Studio** (for Android development) or **Xcode** (for iOS development, macOS only)
+- **Git**
+
+## Setup
+
+<Steps>
+  <Step title="Clone the repository">
+    ```bash
+    git clone https://github.com/ninest/NextBusSG
+    cd NextBusSG
+    ```
+  </Step>
+
+  <Step title="Get your LTA API key">
+    NextBus SG fetches live bus arrival data from the LTA DataMall API. You need an API key to use it.
+
+    Request access at the [LTA DataMall API page](https://datamall.lta.gov.sg/content/datamall/en/request-for-api.html) and fill out the form. LTA will email you your API key.
+  </Step>
+
+  <Step title="Create keys.dart">
+    Inside the `lib/` directory, create a file named `keys.dart` and paste in your API key:
+
+    ```dart
+    final String apiKey = '<YOUR_LTA_API_KEY>';
+    ```
+
+    <Warning>
+      The app will not fetch bus arrival times without a valid LTA API key. Do not commit `keys.dart` to version control — it contains a secret credential.
+    </Warning>
+  </Step>
+
+  <Step title="Install dependencies">
+    ```bash
+    flutter pub get
+    ```
+  </Step>
+
+  <Step title="Run the app">
+    Connect a device or start an emulator, then run:
+
+    ```bash
+    flutter run
+    ```
+  </Step>
+</Steps>
+
+## Project structure
+
+The `lib/` directory is organized as follows:
+
+| Directory | Purpose |
+|---|---|
+| `routes/` | Page-level widgets and screen routing |
+| `services/` | API calls and data-fetching logic |
+| `models/` | Data model classes (bus stop, service, etc.) |
+| `providers/` | State management using the `provider` package |
+| `components/` | Reusable UI widgets |
+| `constants/` | App-wide constant values |
+| `utils/` | Utility functions and helpers |
+| `styles/` | Theme and styling definitions |
+
+## Key dependencies
+
+These packages from `pubspec.yaml` are central to how the app works:
+
+| Package | Purpose |
+|---|---|
+| `provider` | State management |
+| `hive` | Local persistence for settings and favorites |
+| `geolocator` | Accessing the device's GPS location |
+| `permission_handler` | Requesting runtime permissions |
+| `http` | Making HTTP requests to the LTA DataMall API |
